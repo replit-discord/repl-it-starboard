@@ -1,0 +1,32 @@
+{
+  "name": "repl-it-starboard",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "common-tags": "^1.8.0",
+    "discord-akairo": "github:discord-akairo/discord-akairo",
+    "discord.js": "github:discordjs/discord.js",
+    "express": "^4.17.1",
+    "firebase-admin": "^8.6.1"
+  },
+  "description": "The repl.it starboard discord bot.",
+  "main": "index.js",
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "prettier": "^1.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheDrone7/repl-it-starboard.git"
+  },
+  "author": "TheDrone7",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheDrone7/repl-it-starboard/issues"
+  },
+  "homepage": "https://github.com/TheDrone7/repl-it-starboard#readme"
+}

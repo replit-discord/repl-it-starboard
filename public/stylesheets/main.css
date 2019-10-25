@@ -1,0 +1,19 @@
+.hero {
+  padding: 24px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+html {
+  background: #dcdcdc;
+}
+ul {
+  list-style-type: disc;
+  margin-left: 18px;
+}
+a:not(.button) {
+  color: hsl(171, 100%, 41%) !important;
+}
+a:not(.button):hover {
+  color: #fff !important;
+}
