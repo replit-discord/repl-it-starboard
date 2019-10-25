@@ -4,8 +4,13 @@
       <w>akairo</w>
       <w>cooldown</w>
       <w>fullheight</w>
+      <w>leaderboard</w>
       <w>leaderboards</w>
       <w>ratelimit</w>
+      <w>serverinfo</w>
+      <w>tchannel</w>
+      <w>tmin</w>
+      <w>tminimum</w>
       <w>updation</w>
     </words>
   </dictionary>
