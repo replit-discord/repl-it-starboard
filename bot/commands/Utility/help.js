@@ -17,12 +17,12 @@ module.exports = class HelpCommand extends Command {
   }
 
   exec(message, args) {
-    let helpEmbed = new MessageEmbed();
-    helpEmbed
+    let helpEmbed = new MessageEmbed()
       .setTitle('HELP MENU')
       .setColor('RANDOM')
       .setTimestamp()
       .setThumbnail('https://cdn4.iconfinder.com/data/icons/colorful-design-basic-icons-1/550/question_doubt_red-512.png');
+
     if (args.category === 'all') {
       helpEmbed
         .addField(

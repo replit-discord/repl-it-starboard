@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = class InviteCommand extends Command {
   constructor() {
-    super('invite', {aliases: 'invite', cooldown: 10000});
+    super('invite', {aliases: ['invite'], cooldown: 10000});
   }
   exec(message, args) {
     let inviteEmbed = new MessageEmbed()
