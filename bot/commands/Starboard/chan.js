@@ -1,4 +1,5 @@
 const { Command } = require('discord-akairo');
+const { MessageEmbed } = require('discord.js');
 const db = require('../../../db/database');
 
 class ChannelCommand extends Command {
@@ -36,7 +37,12 @@ class ChannelCommand extends Command {
       })
       .catch(err => {
         return message.channel.send(
-          `> **ERROR**\n> ${err.message || err}\n\n> Please report this error to the developers.`
+          new MessageEmbed()
+            .setTitle('ERROR')
+            .setColor('RED')
+            .setTimestamp()
+            .addField('Error Message', `\`\`\`${err.message || err}\`\`\``)
+            .addField('Report', 'Please report this error to the developers and they will try to fix the issue ASAP.')
         );
       });
   }
