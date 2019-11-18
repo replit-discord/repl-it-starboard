@@ -11,9 +11,16 @@ class PingCommand extends Command {
 
   exec(message, args) {
     let start = Date.now();
-    message.channel.send('Pinging!').then(msg => {
-      return msg.edit(`Pong! The message round trip took \`${Date.now() - start}\`ms. The heartbeat ping is \`${this.client.ws.ping}\`ms.`);
-    }).catch(console.error);
+    message.channel
+      .send('Pinging!')
+      .then(msg => {
+        return msg.edit(
+          `Pong! The message round trip took \`${Date.now() - start}\`ms. The heartbeat ping is \`${
+            this.client.ws.ping
+          }\`ms.`
+        );
+      })
+      .catch(console.error);
   }
 }
 

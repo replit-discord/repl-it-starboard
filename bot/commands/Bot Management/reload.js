@@ -1,4 +1,4 @@
-const {Command} = require('discord-akairo');
+const { Command } = require('discord-akairo');
 
 module.exports = class extends Command {
   constructor() {
@@ -9,8 +9,8 @@ module.exports = class extends Command {
   }
 
   exec(message, args) {
-    this.client["listenerHandler"].reloadAll();
-    this.client["commandHandler"].reloadAll();
+    this.client['listenerHandler'].reloadAll();
+    this.client['commandHandler'].reloadAll();
 
     return message.channel.send('Commands and Event listeners reloaded!');
   }

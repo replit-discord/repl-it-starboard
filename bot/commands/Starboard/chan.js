@@ -1,12 +1,13 @@
 const { Command } = require('discord-akairo');
 const db = require('../../../db/database');
 
-module.exports = class SetupCommand extends Command {
+class ChannelCommand extends Command {
   constructor() {
-    super('setup', {
-      aliases: ['setup'],
+    super('channel', {
+      aliases: ['channel', 'chan'],
+      userPermissions: ['MANAGE_GUILD', 'MANAGE_CHANNELS'],
       cooldown: 300000,
-      ratelimit: 1,
+      ratelimit: 5,
       channel: 'guild',
       args: [
         {
@@ -22,36 +23,23 @@ module.exports = class SetupCommand extends Command {
             cancel: '> **Command cancelled**\n> Command has been cancelled successfully.'
           }
         }
-      ],
-      userPermissions: ['MANAGE_GUILD', 'MANAGE_CHANNELS']
+      ]
     });
   }
-  exec(message, args) {
-    if (message.channel.permissionsFor(message.guild.me).has('MANAGE_CHANNELS'))
-      message.channel.overwritePermissions({
-        permissionOverwrites: [
-          { id: message.guild.id, deny: ['SEND_MESSAGES'] },
-          { id: message.author.id, allow: ['SEND_MESSAGES'] }
-        ]
-      });
 
-    db.save('guilds', message.guild.id, {
-      channel: args.channel.id,
-      min: 4,
-      starred: {},
-      users: {}
-    })
+  exec(message, args) {
+    db.upsert('guilds', message.guild.id, { channel: args.channel.id })
       .then(() => {
-        message.react('☑').catch();
         return message.channel.send(
-          `> **SUCCESS**\n> Starboard has been successfully set up for **\`${message.guild.name}\`**.`
+          `> **UPDATED**\n> The channel for the starboard has been set to \`${args.channel}\`.`
         );
       })
       .catch(err => {
-        console.error(err);
         return message.channel.send(
-          `An error occurred - \`${err.message}\`.\nPlease report this to the developers for more help.`
+          `> **ERROR**\n> ${err.message || err}\n\n> Please report this error to the developers.`
         );
       });
   }
-};
+}
+
+module.exports = ChannelCommand;
