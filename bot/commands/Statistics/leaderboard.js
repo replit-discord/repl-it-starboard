@@ -39,12 +39,10 @@ module.exports = class LeaderboardCommand extends Command {
     for (const k of Object.keys(guildData.users)) {
       if (guildData.users[k] > 0) {
         let newDoc = {};
-        let user = await this.client.users.fetch(k).catch(()=>{});
-        if (user)
-          newDoc[user.username] = guildData.users[k];
-        else
-          newDoc[`<${k}>`] = guildData.users[k];
-        users.push(newDoc)
+        let user = await this.client.users.fetch(k).catch(() => {});
+        if (user) newDoc[user.username] = guildData.users[k];
+        else newDoc[`<${k}>`] = guildData.users[k];
+        users.push(newDoc);
       }
     }
 
@@ -80,7 +78,10 @@ module.exports = class LeaderboardCommand extends Command {
       } else {
         for (let i = (args['page'] - 1) * 7; i < (args['page'] - 1) * 7 + 7; i++) {
           if (users[i]) {
-            leaderEmbed.addField(`RANK ${i + 1}`, `__${Object.keys(users[i])[0]}__ **(${Object.values(users[i])[0]} stars)**`);
+            leaderEmbed.addField(
+              `RANK ${i + 1}`,
+              `__${Object.keys(users[i])[0]}__ **(${Object.values(users[i])[0]} stars)**`
+            );
           }
         }
 
