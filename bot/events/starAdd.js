@@ -19,7 +19,7 @@ module.exports = class starAddListener extends Listener {
         if (emoji.name === '⭐') {
           let starCount = msg.reactions.get(emoji.name).count;
           if (msg.reactions.get(emoji.name).users.has(msg.author.id)) starCount -= 1;
-          if (starCount > (guildData.min - 1)) {
+          if (starCount > guildData.min - 1) {
             console.log('Starring message');
             let starboard = this.client.channels.get(guildData.channel);
             if (starboard) {
