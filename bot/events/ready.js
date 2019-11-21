@@ -1,6 +1,6 @@
 const { Listener } = require('discord-akairo');
 
-class ReadyListener extends Listener {
+module.exports = class ReadyListener extends Listener {
   constructor() {
     super('ready', {
       emitter: 'client',
@@ -11,6 +11,4 @@ class ReadyListener extends Listener {
   exec() {
     console.log(`Logged in as @${this.client.user.tag}`);
   }
-}
-
-module.exports = ReadyListener;
+};

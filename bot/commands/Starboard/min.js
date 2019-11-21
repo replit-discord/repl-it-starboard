@@ -2,7 +2,7 @@ const { Command, Argument } = require('discord-akairo');
 const { MessageEmbed } = require('discord.js');
 const db = require('../../../db/database');
 
-class MinCommand extends Command {
+module.exports = class MinCommand extends Command {
   constructor() {
     super('minimum', {
       aliases: ['minimum', 'min'],
@@ -46,6 +46,4 @@ class MinCommand extends Command {
         );
       });
   }
-}
-
-module.exports = MinCommand;
+};

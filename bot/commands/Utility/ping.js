@@ -1,6 +1,6 @@
 const { Command } = require('discord-akairo');
 
-class PingCommand extends Command {
+module.exports = class PingCommand extends Command {
   constructor() {
     super('ping', {
       aliases: ['ping'],
@@ -22,6 +22,4 @@ class PingCommand extends Command {
       })
       .catch(console.error);
   }
-}
-
-module.exports = PingCommand;
+};

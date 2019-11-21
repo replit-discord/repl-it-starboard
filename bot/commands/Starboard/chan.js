@@ -2,7 +2,7 @@ const { Command } = require('discord-akairo');
 const { MessageEmbed } = require('discord.js');
 const db = require('../../../db/database');
 
-class ChannelCommand extends Command {
+module.exports = class ChannelCommand extends Command {
   constructor() {
     super('channel', {
       aliases: ['channel', 'chan'],
@@ -46,6 +46,4 @@ class ChannelCommand extends Command {
         );
       });
   }
-}
-
-module.exports = ChannelCommand;
+};
