@@ -18,9 +18,10 @@ module.exports = class starAddListener extends Listener {
       if (guildData) {
         if (emoji.name === '⭐') {
           let starCount = msg.reactions.get(emoji.name).count;
+
           if (msg.reactions.get(emoji.name).users.has(msg.author.id)) starCount -= 1;
+
           if (starCount > guildData.min - 1) {
-            console.log('Starring message');
             let starboard = this.client.channels.get(guildData.channel);
             if (starboard) {
               if (Object.keys(guildData.starred).includes(msg.id)) {
@@ -39,15 +40,13 @@ module.exports = class starAddListener extends Listener {
                   .setURL(msg.url)
                   .setFooter(`${starCount} stars (⭐)`);
 
-                guildData.starred[msg.id].attachments
-                  ? starEmbed.setImage(guildData.starred[msg.id].attachments)
-                  : null;
+                guildData.starred[msg.id].attachment ? starEmbed.setImage(guildData.starred[msg.id].attachment) : null;
                 guildData.starred[msg.id].content
                   ? starEmbed.addField('Content', guildData.starred[msg.id].content)
                   : null;
                 await starMessage.edit(starEmbed);
               } else {
-                let attachment = msg.attachments.size > 0 ? msg.attachments.values().next().value.url : null;
+                let attachment = msg.attachments.size > 0 ? msg.attachments.first().url : null;
 
                 let newDoc = {
                   content: msg.content,
@@ -68,7 +67,7 @@ module.exports = class starAddListener extends Listener {
                   .setFooter(`${starCount} stars (⭐)`);
 
                 if (newDoc.content) starEmbed.addField('Content', newDoc.content);
-                if (newDoc.attachments) starEmbed.setImage(newDoc.attachments);
+                if (newDoc.attachment) starEmbed.setImage(newDoc.attachment);
 
                 newDoc['embedId'] = (await starboard.send(starEmbed)).id;
 

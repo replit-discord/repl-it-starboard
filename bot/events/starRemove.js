@@ -23,8 +23,6 @@ module.exports = class starRemoveListener extends Listener {
           let starboard = this.client.channels.get(guildData.channel);
           if (starboard) {
             if (starCount > guildData.min - 1) {
-              console.log('Removing star');
-
               if (Object.keys(guildData.starred).includes(msg.id)) {
                 guildData.starred[msg.id].stars = starCount;
                 guildData.users[msg.author.id] -= 1;
@@ -41,9 +39,7 @@ module.exports = class starRemoveListener extends Listener {
                   .setURL(msg.url)
                   .setFooter(`${starCount} stars (⭐)`);
 
-                guildData.starred[msg.id].attachments
-                  ? starEmbed.setImage(guildData.starred[msg.id].attachments)
-                  : null;
+                guildData.starred[msg.id].attachment ? starEmbed.setImage(guildData.starred[msg.id].attachment) : null;
                 guildData.starred[msg.id].content
                   ? starEmbed.addField('Content', guildData.starred[msg.id].content)
                   : null;
