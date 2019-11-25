@@ -1,5 +1,6 @@
 const { Command } = require('discord-akairo');
 const { MessageEmbed } = require('discord.js');
+const db = require('../../../db/database');
 
 module.exports = class EvalCommand extends Command {
   constructor() {
