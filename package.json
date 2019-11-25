@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prestart": "prettier --write \"bot\/**\/*.js\"",
+    "prestart": "prettier --write \"bot/**/*.js\"",
     "start": "node index.js"
   },
   "dependencies": {
