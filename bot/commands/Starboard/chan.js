@@ -1,4 +1,4 @@
-const { Command } = require('discord-akairo');
+const Command = require('../../core');
 const { MessageEmbed } = require('discord.js');
 const db = require('../../../db/database');
 
@@ -6,8 +6,11 @@ module.exports = class ChannelCommand extends Command {
   constructor() {
     super('channel', {
       aliases: ['channel', 'chan'],
-      userPermissions: ['MANAGE_GUILD', 'MANAGE_CHANNELS'],
+      userPermissions: ['ADMINISTRATOR'],
       cooldown: 300000,
+      description: 'Modifies the channel to be used as the starboard in the server.',
+      details:
+        'Modifies the channel to be used as the starboard in the server.\n**You need to be an admin to be able to use this command.**',
       ratelimit: 5,
       channel: 'guild',
       args: [
@@ -24,7 +27,11 @@ module.exports = class ChannelCommand extends Command {
             cancel: '> **Command cancelled**\n> Command has been cancelled successfully.'
           }
         }
-      ]
+      ],
+      examples: ['chan #announcements', 'channel chat'],
+      argumentDetails: [{ name: 'channel', required: true, description: 'The channel to be used for the starboard.' }],
+      icon:
+        'https://cdn1.iconfinder.com/data/icons/interface-white-with-multicolor-circle-background/2048/Settings-512.png'
     });
   }
 

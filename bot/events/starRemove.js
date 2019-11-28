@@ -18,8 +18,8 @@ module.exports = class starRemoveListener extends Listener {
       let guildData = await db.fetch('guilds', msg.guild.id).catch(() => {});
       if (guildData) {
         if (emoji.name === '⭐') {
-          let starCount = msg.reactions.get(emoji.name).count;
-          if (msg.reactions.get(emoji.name).users.has(msg.author.id)) starCount -= 1;
+          let starCount = (await msg.reactions.get(emoji.name).users.fetch()).filter(u => u.id !== msg.author.id).size;
+
           let starboard = this.client.channels.get(guildData.channel);
           if (starboard) {
             if (starCount > guildData.min - 1) {
@@ -28,7 +28,9 @@ module.exports = class starRemoveListener extends Listener {
                 guildData.users[msg.author.id] -= 1;
                 await db.upsert('guilds', msg.guild.id, guildData);
 
-                let starMessage = await starboard.messages.fetch(guildData.starred[msg.id]['embedId']);
+                let starMessage = await starboard.messages
+                  .fetch(guildData.starred[msg.id]['embedId'])
+                  .catch(console.error);
                 let starEmbed = new MessageEmbed()
                   .setTitle('View message')
                   .addField('Author', msg.author, true)

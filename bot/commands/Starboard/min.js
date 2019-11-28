@@ -1,4 +1,5 @@
-const { Command, Argument } = require('discord-akairo');
+const { Argument } = require('discord-akairo');
+const Command = require('../../core');
 const { MessageEmbed } = require('discord.js');
 const db = require('../../../db/database');
 
@@ -6,8 +7,11 @@ module.exports = class MinCommand extends Command {
   constructor() {
     super('minimum', {
       aliases: ['minimum', 'min'],
-      userPermissions: ['MANAGE_GUILD', 'MANAGE_CHANNELS'],
+      userPermissions: ['ADMINISTRATOR'],
       cooldown: 300000,
+      description: 'Modifies the minimum star requirement for a message to be starred.',
+      details:
+        'Modifies the minimum star requirement for a message to be starred.\n**You need to be an admin to be able to use this command.**',
       ratelimit: 5,
       channel: 'guild',
       args: [
@@ -24,7 +28,11 @@ module.exports = class MinCommand extends Command {
             cancel: '> **Command cancelled**\n> Command has been cancelled successfully.'
           }
         }
-      ]
+      ],
+      examples: ['minimum 10', 'min 6'],
+      argumentDetails: [{ name: 'channel', required: true, description: 'The channel to be used for the starboard.' }],
+      icon:
+        'https://cdn1.iconfinder.com/data/icons/interface-white-with-multicolor-circle-background/2048/Settings-512.png'
     });
   }
 

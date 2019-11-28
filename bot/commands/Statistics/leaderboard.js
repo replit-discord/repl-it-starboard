@@ -1,4 +1,5 @@
-const { Command, Argument } = require('discord-akairo');
+const { Argument } = require('discord-akairo');
+const Command = require('../../core');
 const { MessageEmbed } = require('discord.js');
 const db = require('../../../db/database');
 
@@ -7,6 +8,7 @@ module.exports = class LeaderboardCommand extends Command {
     super('leaderboard', {
       aliases: ['leaderboard', 'leaders', 'leader', 'l'],
       cooldown: 10000,
+      description: "Displays the server's starboard leaderboard.",
       ratelimit: 1,
       args: [
         {
@@ -14,7 +16,12 @@ module.exports = class LeaderboardCommand extends Command {
           type: Argument.range('number', 1, Infinity, true),
           default: 1
         }
-      ]
+      ],
+      icon: 'https://cdn2.iconfinder.com/data/icons/flat-game-ui-buttons-icons-1/512/19-512.png',
+      argumentDetails: [
+        { name: 'page', required: false, description: 'The page number of the leaderboard to be viewed.' }
+      ],
+      examples: ['leaderboard', 'leaders 2', 'l 3']
     });
   }
 

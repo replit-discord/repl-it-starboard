@@ -1,4 +1,4 @@
-const { Command } = require('discord-akairo');
+const Command = require('../../core');
 const { MessageEmbed } = require('discord.js');
 const db = require('../../../db/database');
 
@@ -6,7 +6,9 @@ module.exports = class EvalCommand extends Command {
   constructor() {
     super('eval', {
       aliases: ['eval', 'e'],
-      ownerOnly: true
+      ownerOnly: true,
+      description:
+        "Evaluates the given piece of code with respect to the bot's source and displays the output. Only usable by the bot owner."
     });
   }
 

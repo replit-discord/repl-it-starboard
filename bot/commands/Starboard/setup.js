@@ -1,4 +1,4 @@
-const { Command } = require('discord-akairo');
+const Command = require('../../core');
 const db = require('../../../db/database');
 
 module.exports = class SetupCommand extends Command {
@@ -6,6 +6,9 @@ module.exports = class SetupCommand extends Command {
     super('setup', {
       aliases: ['setup'],
       cooldown: 300000,
+      description: 'Sets up the bot for your server and enables the starboard facility.',
+      details:
+        'Sets up the bot for your server and enables the starboard facility.\n**You need to be an admin to be able to use this command.**',
       ratelimit: 1,
       channel: 'guild',
       args: [
@@ -23,7 +26,11 @@ module.exports = class SetupCommand extends Command {
           }
         }
       ],
-      userPermissions: ['MANAGE_GUILD', 'MANAGE_CHANNELS']
+      userPermissions: ['ADMINISTRATOR'],
+      examples: ['setup #starboard', 'setup chat'],
+      argumentDetails: [{ name: 'channel', required: true, description: 'The channel to be used for the starboard.' }],
+      icon:
+        'https://cdn1.iconfinder.com/data/icons/interface-white-with-multicolor-circle-background/2048/Settings-512.png'
     });
   }
   exec(message, args) {

@@ -1,4 +1,4 @@
-const { Command } = require('discord-akairo');
+const Command = require('../../core');
 const { MessageEmbed } = require('discord.js');
 const db = require('../../../db/database');
 
@@ -7,7 +7,9 @@ module.exports = class GuildInfoCommand extends Command {
     super('serverinfo', {
       aliases: ['serverinfo', 'guildinfo'],
       cooldown: 60000,
-      ratelimit: 5
+      description: "Displays the server's current settings.",
+      ratelimit: 5,
+      icon: 'https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/info-circle-outline-512.png'
     });
   }
 

@@ -1,10 +1,12 @@
-const { Command } = require('discord-akairo');
+const Command = require('../../core');
 
 module.exports = class extends Command {
   constructor() {
     super('reload', {
       aliases: ['reload', 'r', 'refresh'],
-      ownerOnly: true
+      ownerOnly: true,
+      description:
+        'Reloads all events and commands and applies the modifications made since restart. Only usable by bot owner.'
     });
   }
 

@@ -1,9 +1,14 @@
-const { Command } = require('discord-akairo');
+const Command = require('../../core');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = class InviteCommand extends Command {
   constructor() {
-    super('invite', { aliases: ['invite'], cooldown: 10000 });
+    super('invite', {
+      aliases: ['invite'],
+      cooldown: 10000,
+      description: 'Sends a link to invite the bot to your server!',
+      icon: 'https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/info-circle-outline-512.png'
+    });
   }
   exec(message, args) {
     let inviteEmbed = new MessageEmbed().setDescription(
