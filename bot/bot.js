@@ -19,12 +19,16 @@ class Starboard extends AkairoClient {
       }
     );
 
+<<<<<<< HEAD
     this.commandHandler = new CommandHandler(this, {
       directory: './bot/commands/',
       prefix: 's!',
       ignorePermissions: [this.ownerID],
       automateCategories: true
     });
+=======
+    this.commandHandler = new CommandHandler(this, { directory: './bot/commands/', prefix: '*' });
+>>>>>>> 0185f2dd3310ec21aaa475533b14e47198f4cd63
     this.listenerHandler = new ListenerHandler(this, { directory: './bot/events/' });
     this.listenerHandler.loadAll();
 
