@@ -24,7 +24,7 @@ class Starboard extends AkairoClient {
       ignorePermissions: [this.ownerID],
       automateCategories: true
     });
-    this.commandHandler = new CommandHandler(this, { directory: './bot/commands/', prefix: '*' });
+    
     this.listenerHandler = new ListenerHandler(this, { directory: './bot/events/' });
     this.listenerHandler.loadAll();
 
