@@ -1,33 +1,22 @@
 {
-  "name": "repl-it-starboard",
+  "name": "starboard-new",
   "version": "1.0.0",
-  "private": true,
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "github:discordjs/discord.js#master",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^8.9.2",
+    "fs-nextra": "^0.4.7",
+    "klasa": "github:dirigeants/klasa#master",
+    "node": "^13.10.1"
+  },
+  "devDependencies": {},
   "scripts": {
-    "prestart": "prettier --write \"bot/**/*.js\"",
     "start": "node index.js"
   },
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "common-tags": "^1.8.0",
-    "discord-akairo": "github:discord-akairo/discord-akairo",
-    "discord.js": "github:discordjs/discord.js",
-    "express": "^4.17.1",
-    "firebase-admin": "^8.6.1"
-  },
-  "description": "The repl.it starboard discord bot.",
-  "main": "index.js",
-  "devDependencies": {
-    "dotenv": "^8.2.0",
-    "prettier": "^1.18.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TheDrone7/repl-it-starboard.git"
-  },
-  "author": "TheDrone7",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/TheDrone7/repl-it-starboard/issues"
-  },
-  "homepage": "https://github.com/TheDrone7/repl-it-starboard#readme"
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
