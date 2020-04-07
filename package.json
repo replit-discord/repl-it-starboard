@@ -1,33 +1,25 @@
 {
-  "name": "repl-it-starboard",
+  "name": "starboard",
   "version": "1.0.0",
+  "description": "Repl.it starboard website.",
+  "author": "TheDrone7",
   "private": true,
   "scripts": {
-    "prestart": "prettier --write \"bot/**/*.js\"",
-    "start": "node index.js"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "common-tags": "^1.8.0",
-    "discord-akairo": "github:discord-akairo/discord-akairo",
-    "discord.js": "github:discordjs/discord.js",
-    "express": "^4.17.1",
-    "firebase-admin": "^8.6.1"
+    "nuxt": "^2.0.0",
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/dotenv": "^1.4.0"
   },
-  "description": "The repl.it starboard discord bot.",
-  "main": "index.js",
   "devDependencies": {
-    "dotenv": "^8.2.0",
-    "prettier": "^1.18.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TheDrone7/repl-it-starboard.git"
-  },
-  "author": "TheDrone7",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/TheDrone7/repl-it-starboard/issues"
-  },
-  "homepage": "https://github.com/TheDrone7/repl-it-starboard#readme"
+    "@nuxtjs/vuetify": "^1.0.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1"
+  }
 }
